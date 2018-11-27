@@ -1,0 +1,2 @@
+cmudict==0.4.1
+pronouncing==0.2.0
