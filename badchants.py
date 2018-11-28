@@ -1,6 +1,7 @@
 import json
 import pronouncing
 import re
+import random
 
 CELEBS_PATH = 'input/celebrities.json'
 
@@ -26,8 +27,13 @@ def has_wrestling_cadence(string):
 		return all_match_cadence(words, ['^[12]0$'] * 2)
 	return False
 
+def make_chant(string):
+	clap = "\U0001F44F"
+	half_chant = f"{string.upper()}! {clap} {clap} {clap}{clap}{clap}"
+	return "\n".join([half_chant] * 2)
+
+
 if __name__ == '__main__':
 	names = load_names()
 	filtered_names = list(filter(has_wrestling_cadence, names))
-	print(filtered_names)
-	print(len(filtered_names))
+	print(make_chant(random.choice(filtered_names)))
